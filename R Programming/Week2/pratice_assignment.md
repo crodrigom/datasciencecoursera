@@ -144,4 +144,35 @@ We couls use complete.cases() or is.na()
 
 Retrieving with complete.cases
     
-    dat[complete.cases(dat),]
+    compl <- dat[complete.cases(dat),]
+    median(compl$Weight)
+
+Using na.rm parameter in median:
+
+    median(dat$Weight, na.rm=TRUE)
+    
+The median weight of day 30
+
+    dat_30 <- dat[which(dat[, "Day"] == 30),]
+    dat_30
+    median(dat_30$Weight)
+    
+### Function that will return the median weight of a given day
+
+    weightmedian <- function(directory, day)  {
+        files_list <- list.files(directory, full.names=TRUE)   #creates a list of files
+        dat <- data.frame()                             #creates an empty data frame
+        for (i in 1:5) {                                
+                #loops through the files, rbinding them together 
+                dat <- rbind(dat, read.csv(files_list[i]))
+        }
+        dat_subset <- dat[which(dat[, "Day"] == day),]  #subsets the rows that match the 'day' argument
+        median(dat_subset[, "Weight"], na.rm=TRUE)      #identifies the median weight 
+                                                        #while stripping out the NAs
+    }
+    
+Testing....
+
+    weightmedian(directory = "diet_data", day = 20)
+    weightmedian("diet_data", 4)
+    weightmedian("diet_data", 17)
