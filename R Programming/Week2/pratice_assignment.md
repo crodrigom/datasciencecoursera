@@ -156,7 +156,7 @@ The median weight of day 30
     dat_30 <- dat[which(dat[, "Day"] == 30),]
     dat_30
     median(dat_30$Weight)
-    
+
 ### Function that will return the median weight of a given day
 
     weightmedian <- function(directory, day)  {
@@ -176,3 +176,20 @@ Testing....
     weightmedian(directory = "diet_data", day = 20)
     weightmedian("diet_data", 4)
     weightmedian("diet_data", 17)
+
+
+TODO: get better functional end optimal solution with: http://adv-r.had.co.nz/Functionals.html
+    
+    files_full <- list.files("diet_data", full.names=TRUE)
+    summary(files_full)
+    tmp <- vector(mode = "list", length = length(files_full))
+    summary(tmp)
+    for (i in seq_along(files_full)) {
+        tmp[[i]] <- read.csv(files_full[[i]])
+    }
+    str(tmp)
+    str(lapply(files_full, read.csv))
+
+    output <- do.call(rbind, tmp)
+    str(output)
+    output
