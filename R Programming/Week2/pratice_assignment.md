@@ -68,3 +68,22 @@ Result
     > names(andy)
     [1] "Patient.Name" "Age"          "Weight"      
     [4] "Day"   
+
+
+### Playing with the data
+
+Weight in line 1 and 30 retrieved in different ways:
+
+        andy[1, "Weight"]
+        andy[30, "Weight"]
+
+Subset of the 'Weight' column where the data where 'Day' is equal to 30.
+
+        andy[which(andy$Day == 30), "Weight"]
+        andy[which(andy[,"Day"] == 30), "Weight"]
+
+Using subset:
+        
+        subset(andy$Weight, andy$Day==30)
+        
+        
