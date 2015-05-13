@@ -116,3 +116,32 @@ It did not work because JOhn.csv is inside diet_data folder and we are trying to
 
     head(read.csv(files_full[3]))
 
+### To create one big data frame with everybody's data using rbind and a loop
+
+First, creating a data.frame only with Andy and David's data
+
+    andy_david <- rbind(andy, read.csv(files_full[2]))
+Checking
+    head(andy_david)
+    tail(andy_david)
+
+Subset of the data frame that shows us just the 25th day for Andy and David:
+
+    day_25 <- andy_david[which(andy_david$Day == 25), ]
+    day_25    
+    
+Now, everybody:
+
+    dat <- data.frame()
+    for (i in 1:5) {
+        dat <- rbind(dat, read.csv(files_full[i]))
+    }
+    str(dat)
+    
+### Get rid of NA data to calculate Median
+
+We couls use complete.cases() or is.na()
+
+Retrieving with complete.cases
+    
+    dat[complete.cases(dat),]
