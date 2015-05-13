@@ -70,7 +70,7 @@ Result
     [4] "Day"   
 
 
-### Playing with the data
+## Playing with the data
 
 Weight in line 1 and 30 retrieved in different ways:
 
@@ -86,4 +86,33 @@ Using subset:
         
         subset(andy$Weight, andy$Day==30)
         
+### Find out how much weight Andy lost
+
+        andy_start <- andy[1, "Weight"]
+        andy_end <- andy[30, "Weight"]
+        andy_loss <- andy_start - and_end
+        andy_loss
+
+### Load all files
+
+        files <- list.files("diet_data")
+
+Print it:
         
+        files
+        files[1]
+        files[2]
+        files[3:5]
+        
+Try to read John's file:
+
+    head(read.csv(files[3]))
+It did not work because JOhn.csv is inside diet_data folder and we are trying to open this file in the upper folder. Let's fix that.
+
+### Load all files with full names
+
+    files_full <- list.files("diet_data", full.names=TRUE)
+    files_full
+
+    head(read.csv(files_full[3]))
+
