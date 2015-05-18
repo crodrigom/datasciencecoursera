@@ -3,7 +3,6 @@
 ## These function together allow the inverse matrix to be computed 
 ## only once. Saving computational resource
 
-
 ## makeCacheMatrix create an object that it is a derivation
 ## of the classic matrix object
 ## x should receive a matrix (i.e. mat <- matrix(1:4, 2,2))

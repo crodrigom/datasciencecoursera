@@ -15,4 +15,13 @@ sapply(split(mtcars$mpg, mtcars$cyl), mean)
 #or
 mapply(mean, split(mtcars$mpg, mtcars$cyl))
 
-#Tips
+#Q4
+library(datasets)
+data(mtcars)
+r <- sapply(split(mtcars$hp, mtcars$cyl), mean)
+r["8"] - r["4"]
+
+#Q5
+debug(ls)
+ls
+#Execution of 'ls' will suspend at the beginning of the function and you will be in the browser.
