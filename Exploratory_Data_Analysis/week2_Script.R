@@ -28,3 +28,20 @@ qplot(hwy, data = mpg, geom = "density")
 qplot(hwy, data = mpg, geom = "density", color= drv)
 qplot(hwy, displ, data = mpg,  color= drv, geom = c("point", "smooth"), method = "lm")
 qplot(hwy, displ, data = mpg,  facets = .~drv, geom = c("point", "smooth"), method = "lm")
+
+
+#ggplot2(part3), ggplot2(part4) are very good!
+
+testdat <- data.frame(x = 1:100, y = rnorm(100))
+testdat[50,2] = 100 ## Outlier!
+plot(testdat$x, testdat$y, type = "l", ylim = c(-3,3))
+
+g = ggplot(testdat, aes(x=x, y=y))
+g + geom_line()
+
+g + geom_line() + ylim(-3,3)
+
+g + geom_line() + coord_cartesian(ylim = c(-3,3))
+
+
+#quantile and levels, 4:30 of ggplot2(part 5) has a good example
