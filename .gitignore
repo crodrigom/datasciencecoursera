@@ -18,3 +18,5 @@ data/jeff.jpg
 data/restaurants.csv
 
 data/jeff.jpg
+
+*.rds
