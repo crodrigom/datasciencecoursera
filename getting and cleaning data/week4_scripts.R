@@ -74,6 +74,10 @@ x = dmy(c("1jan1960", "2jan1960"))
 wday(x[1])
 wday(x[1], label = TRUE)
 
+# === Data resourses ====
+
+
+
 
 
 
