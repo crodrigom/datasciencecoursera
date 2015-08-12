@@ -1,0 +1,76 @@
+*This text will appear italicized!*
+
+**This text will appear bold!**
+
+# This is a primary heading
+## This is a secondary heading
+### This is a tertiary heading
+
+- first item in list
+- second item in list
+- third item in list
+
+1. first item in list
+2. second item in list
+3. third item in list
+
+Links
+[Johns Hopkins Bloomberg School of Public Health](http://www.jhsph.edu/)
+[Download R](http://www.r-project.org/)
+[RStudio](http://www.rstudio.com/)
+
+Advanced Linking
+
+I spend so much time reading [R bloggers][1] and [Simply Statistics][2]!
+ [1]: http://www.r-bloggers.com/ "R bloggers"
+ [2]: http://simplystatistics.org/ "Simply Statistics" 
+ 
+ 
+ ============================
+ 
+ My First R Markdown File
+ ====================
+ 
+ This is my first R markdown file.
+ 
+ Here, we're going load some data.
+ 
+```{r}
+library(datasets)
+data(airquality)
+summary(airquality)
+```
+ 
+Let's first make a pairs plots of the data
+
+```{r}
+pairs(airquality)
+```
+
+Here's a regretion model of ozone and wind, solar radiation, and temperature.
+```{r}
+library(stats)
+fit <- lm(Ozone ~Wind + Solar.R + Temp, data = airquality)
+summary(fit)
+```
+## Introduction
+
+ 
+ Let's first simulate some data.
+```{r simulatedata, echo=TRUE}
+ x <- rnorm(100); y <- x + rnorm(100, sd = 0.5)
+```
+
+ here is a scatterplor of the data.
+```{r scatterplot, fig.height=4}
+ par(mar = c(5,4,1,1), las =1)
+ plot(x,y,main = "My Simulated Data")
+```
+
+ here is a table of regression coefficients.
+```{r showtable,results="asis"}
+ library(xtable)
+ xt = xtable(summary(fit))
+ print(xt, type = "html")
+```
+
