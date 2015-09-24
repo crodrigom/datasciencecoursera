@@ -20,3 +20,18 @@ data/restaurants.csv
 data/jeff.jpg
 
 *.rds
+/Statistical_Inference/rmd/rmd/01_Introduction.Rmd
+/Statistical_Inference/rmd/rmd/02_Probability.Rmd
+/Statistical_Inference/rmd/rmd/03_ConditionalProbability.Rmd
+/Statistical_Inference/rmd/rmd/04_Expectations.Rmd
+/Statistical_Inference/rmd/rmd/04_Expectations.html
+/Statistical_Inference/rmd/rmd/05_Variance.Rmd
+/Statistical_Inference/rmd/rmd/06_CommonDistros.Rmd
+/Statistical_Inference/rmd/rmd/07_Asymptopia.Rmd
+/Statistical_Inference/rmd/rmd/07_Asymptopia.pdf
+/Statistical_Inference/rmd/rmd/08_tCIs.Rmd
+/Statistical_Inference/rmd/rmd/09_HT.Rmd
+/Statistical_Inference/rmd/rmd/10_pValues.Rmd
+/Statistical_Inference/rmd/rmd/11_Power.Rmd
+/Statistical_Inference/rmd/rmd/12_MultipleTesting.Rmd
+/Statistical_Inference/rmd/rmd/13_Resampling.Rmd
