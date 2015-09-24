@@ -1,0 +1,81 @@
+---
+title: "Statistical Inference Course Project, Part2 - ToothGrowth analysis"
+author: "Rodrigo"
+date: "September 24, 2015"
+output: pdf_document
+---
+
+In this second part of the project, we analyze the ToothGrowth data in the R datasets package.
+The dataset contains 60 observations, length of odontoblasts (teeth) in each of 10 guinea pigs at each of three dose levels of Vitamin C (0.5, 1 and 2 mg) with each of two delivery methods (orange juice or ascorbic acid).
+
+First we load the data and perform some basic exploratory data analyis
+
+```{r}
+library(ggplot2)
+library(datasets)
+data(ToothGrowth)
+str(ToothGrowth) # internal strcuct of dataset
+head(ToothGrowth)
+summary(ToothGrowth)
+```
+
+```{r}
+plot <- ggplot(ToothGrowth, 
+               aes(x=as.factor(dose),y=len,fill=as.factor(supp)))
+plot + geom_boxplot(notch=F) + facet_grid(.~supp) +
+     scale_x_discrete("Dosage (Milligram)") +   
+     scale_y_continuous("Length of Teeth") +  
+     ggtitle("Relation tooth lenght and dose levels for orange juice (OJ) and ascordic acide(VC)")
+
+```
+
+The chart aboove shows that there is a rcorrelation between the tooth length and the dose levels of Vitamin C, for both delivery methods: orange juice (OJ) and ascordic acide(VC).
+
+Tabulating the delivery method by the dose levels of vitamin C
+
+```{r}
+table(ToothGrowth$supp, ToothGrowth$dose)
+
+```
+
+
+
+We can also use regression analysis to identify the effect of the dose.
+The regression anslysis can help us to answer the following question:
+"How much of the variance in tooth length, if any, can be explained by the supplement type?"
+
+
+```{r}
+fit <- lm(len ~ dose + supp, data=ToothGrowth)
+summary(fit)
+
+```
+
+One can see that there is 70% of the variance in the data and 
+The intercept `r fit$coefficients[[1]]`, means that with no supplement of
+Vitamin C, the average tooth length is `r fit$coefficients[[1]]` units. 
+The coefficient of `dose` is `r fit$coefficients[[2]]`. 
+One can interpreted this as an increasing the delivering dose 1 mg could increase the tooth length `r fit$coefficients[[2]]` units.
+
+The last coefficient is for the supplement type. 
+Since the supplement type is a categorical variable, dummy variables are used. 
+Moreover, delivering a given dose as ascorbic acid, without changing the dose, would result in
+`r abs(fit$coefficients[[3]])` units of decrease in the tooth length. 
+
+Using Use confidence intervals and hypothesis tests to compare tooth growth by supp and dose:
+
+```{r}
+confint(fit)
+```
+
+We can conclude that collecting a different set of data and
+estimate parameters of the linear model over end over again,
+the coefficient estimations will be in the ranges above in 95% of the time.
+
+Thi null hypothesis in this case is that the coefficients are
+zero, and the no tooth length variation is explained by that variable.
+As one can see the p-values are less than 0.5. 
+As a result the null hypothesis is rejecting. 
+In addition, each variable explains a significant portion of variability in tooth length,
+assuming the significance level is 5%.
+
