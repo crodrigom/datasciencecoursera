@@ -1,14 +1,14 @@
 #Q1
 
-baseline <- c(140, 138, 150, 148, 135)
-week2    <- c(132, 135, 151, 146, 130)
-difference <- week2 - baseline
+baseline = c(140, 138, 150, 148, 135)
+week2    = c(132, 135, 151, 146, 130)
+difference = week2 - baseline
 # H_0: there is no change (two-sided test) in the mean of the blood pressure.
-n <- length(baseline)
+n = length(baseline)
 
-t_stat <- mean(difference) / (sd(difference)/sqrt(n))
-p_value <- pt(q=t_stat, df=n-1, lower.tail=TRUE)
-two_sided_p_value <- 2 * p_value
+t_stat = mean(difference) / (sd(difference)/sqrt(n))
+p_value = pt(q=t_stat, df=n-1, lower.tail=TRUE)
+two_sided_p_value = 2 * p_value
 two_sided_p_value 
 
 # p-value: easy way using t.test
@@ -17,11 +17,11 @@ ttest$p.value
 
 
 #Q2
-n <- 9
-mu <- 1100
-sd <- 30
+n = 9
+mu = 1100
+sd = 30
 alpha = 0.05
-t_stat <- qt(p=(1-alpha/2), df=(n-1))
+t_stat = qt(p=(1-alpha/2), df=(n-1))
 # The range of t_stat we would fail to reject H_0 is 
 c(-1, 1) * t_stat
 
@@ -38,19 +38,19 @@ pbinom(2, size=4, prob=0.5, lower.tail=F)
 
 #Q4
 # Probability of 10 or less people infected given expected lambda people infected.
-lambda <- 1 / 100 * 1787
+lambda = 1 / 100 * 1787
 ppois(10, lambda)
 
 #Q5
-n1 <- 9
-n2 <- 9
-x1 <- -3  ##treated
-s1 <- 1.5  ##treated
-x2 <- 1  ##placebo
-s2 <- 1.8  ##placebo
+n1 = 9
+n2 = 9
+x1 = -3  ##treated
+s1 = 1.5  ##treated
+x2 = 1  ##placebo
+s2 = 1.8  ##placebo
 
-s <- sqrt(((n1 - 1) * s1^2 + (n2 - 1) * s2^2)/(n1 + n2 - 2))
-ts <- (x1 - x2)/(s * sqrt(1/n1 + 1/n2))
+s = sqrt(((n1 - 1) * s1^2 + (n2 - 1) * s2^2)/(n1 + n2 - 2))
+ts = (x1 - x2)/(s * sqrt(1/n1 + 1/n2))
 2 * pt(ts, n1 + n2 - 2)
 
 #Q6
